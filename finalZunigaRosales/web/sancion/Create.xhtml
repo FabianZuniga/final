@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSancionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSancionLabel_idsancion}" for="idsancion" />
+                    <h:inputText id="idsancion" value="#{sancionController.selected.idsancion}" title="#{bundle.CreateSancionTitle_idsancion}" required="true" requiredMessage="#{bundle.CreateSancionRequiredMessage_idsancion}"/>
+                    <h:outputLabel value="#{bundle.CreateSancionLabel_idEquipoJugado}" for="idEquipoJugado" />
+                    <h:selectOneMenu id="idEquipoJugado" value="#{sancionController.selected.idEquipoJugado}" title="#{bundle.CreateSancionTitle_idEquipoJugado}" required="true" requiredMessage="#{bundle.CreateSancionRequiredMessage_idEquipoJugado}">
+                        <f:selectItems value="#{equipoJugadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSancionLabel_idpartido}" for="idpartido" />
+                    <h:selectOneMenu id="idpartido" value="#{sancionController.selected.idpartido}" title="#{bundle.CreateSancionTitle_idpartido}" required="true" requiredMessage="#{bundle.CreateSancionRequiredMessage_idpartido}">
+                        <f:selectItems value="#{partidoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSancionLabel_tipoSancion}" for="tipoSancion" />
+                    <h:selectOneMenu id="tipoSancion" value="#{sancionController.selected.tipoSancion}" title="#{bundle.CreateSancionTitle_tipoSancion}" required="true" requiredMessage="#{bundle.CreateSancionRequiredMessage_tipoSancion}">
+                        <f:selectItems value="#{tipoSancionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sancionController.create}" value="#{bundle.CreateSancionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sancionController.prepareList}" value="#{bundle.CreateSancionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSancionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

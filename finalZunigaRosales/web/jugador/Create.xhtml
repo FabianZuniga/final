@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateJugadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateJugadorLabel_idjugador}" for="idjugador" />
+                    <h:inputText id="idjugador" value="#{jugadorController.selected.idjugador}" title="#{bundle.CreateJugadorTitle_idjugador}" required="true" requiredMessage="#{bundle.CreateJugadorRequiredMessage_idjugador}"/>
+                    <h:outputLabel value="#{bundle.CreateJugadorLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{jugadorController.selected.nombre}" title="#{bundle.CreateJugadorTitle_nombre}" required="true" requiredMessage="#{bundle.CreateJugadorRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateJugadorLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{jugadorController.selected.apellido}" title="#{bundle.CreateJugadorTitle_apellido}" required="true" requiredMessage="#{bundle.CreateJugadorRequiredMessage_apellido}"/>
+                    <h:outputLabel value="#{bundle.CreateJugadorLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{jugadorController.selected.fechaNacimiento}" title="#{bundle.CreateJugadorTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.CreateJugadorRequiredMessage_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{jugadorController.create}" value="#{bundle.CreateJugadorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{jugadorController.prepareList}" value="#{bundle.CreateJugadorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateJugadorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePartidoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePartidoLabel_idpartido}" for="idpartido" />
+                    <h:inputText id="idpartido" value="#{partidoController.selected.idpartido}" title="#{bundle.CreatePartidoTitle_idpartido}" required="true" requiredMessage="#{bundle.CreatePartidoRequiredMessage_idpartido}"/>
+                    <h:outputLabel value="#{bundle.CreatePartidoLabel_fechaHora}" for="fechaHora" />
+                    <h:inputText id="fechaHora" value="#{partidoController.selected.fechaHora}" title="#{bundle.CreatePartidoTitle_fechaHora}" required="true" requiredMessage="#{bundle.CreatePartidoRequiredMessage_fechaHora}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePartidoLabel_arbritroCentral}" for="arbritroCentral" />
+                    <h:selectOneMenu id="arbritroCentral" value="#{partidoController.selected.arbritroCentral}" title="#{bundle.CreatePartidoTitle_arbritroCentral}" required="true" requiredMessage="#{bundle.CreatePartidoRequiredMessage_arbritroCentral}">
+                        <f:selectItems value="#{arbritroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePartidoLabel_idarbritro1}" for="idarbritro1" />
+                    <h:selectOneMenu id="idarbritro1" value="#{partidoController.selected.idarbritro1}" title="#{bundle.CreatePartidoTitle_idarbritro1}" required="true" requiredMessage="#{bundle.CreatePartidoRequiredMessage_idarbritro1}">
+                        <f:selectItems value="#{arbritroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePartidoLabel_idarbritro2}" for="idarbritro2" />
+                    <h:selectOneMenu id="idarbritro2" value="#{partidoController.selected.idarbritro2}" title="#{bundle.CreatePartidoTitle_idarbritro2}" required="true" requiredMessage="#{bundle.CreatePartidoRequiredMessage_idarbritro2}">
+                        <f:selectItems value="#{arbritroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePartidoLabel_idarbritro3}" for="idarbritro3" />
+                    <h:selectOneMenu id="idarbritro3" value="#{partidoController.selected.idarbritro3}" title="#{bundle.CreatePartidoTitle_idarbritro3}" required="true" requiredMessage="#{bundle.CreatePartidoRequiredMessage_idarbritro3}">
+                        <f:selectItems value="#{arbritroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePartidoLabel_idcancha}" for="idcancha" />
+                    <h:selectOneMenu id="idcancha" value="#{partidoController.selected.idcancha}" title="#{bundle.CreatePartidoTitle_idcancha}" required="true" requiredMessage="#{bundle.CreatePartidoRequiredMessage_idcancha}">
+                        <f:selectItems value="#{canchaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePartidoLabel_equipoVisitante}" for="equipoVisitante" />
+                    <h:selectOneMenu id="equipoVisitante" value="#{partidoController.selected.equipoVisitante}" title="#{bundle.CreatePartidoTitle_equipoVisitante}" required="true" requiredMessage="#{bundle.CreatePartidoRequiredMessage_equipoVisitante}">
+                        <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePartidoLabel_equipoLocal}" for="equipoLocal" />
+                    <h:selectOneMenu id="equipoLocal" value="#{partidoController.selected.equipoLocal}" title="#{bundle.CreatePartidoTitle_equipoLocal}" required="true" requiredMessage="#{bundle.CreatePartidoRequiredMessage_equipoLocal}">
+                        <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{partidoController.create}" value="#{bundle.CreatePartidoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{partidoController.prepareList}" value="#{bundle.CreatePartidoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePartidoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditGolTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditGolLabel_idgol}" for="idgol" />
+                    <h:inputText id="idgol" value="#{golController.selected.idgol}" title="#{bundle.EditGolTitle_idgol}" required="true" requiredMessage="#{bundle.EditGolRequiredMessage_idgol}"/>
+                    <h:outputLabel value="#{bundle.EditGolLabel_equipoJugador}" for="equipoJugador" />
+                    <h:selectOneMenu id="equipoJugador" value="#{golController.selected.equipoJugador}" title="#{bundle.EditGolTitle_equipoJugador}" required="true" requiredMessage="#{bundle.EditGolRequiredMessage_equipoJugador}">
+                        <f:selectItems value="#{equipoJugadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditGolLabel_idpartido}" for="idpartido" />
+                    <h:selectOneMenu id="idpartido" value="#{golController.selected.idpartido}" title="#{bundle.EditGolTitle_idpartido}" required="true" requiredMessage="#{bundle.EditGolRequiredMessage_idpartido}">
+                        <f:selectItems value="#{partidoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{golController.update}" value="#{bundle.EditGolSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditGolViewLink}"/>
+                <br />
+                <h:commandLink action="#{golController.prepareList}" value="#{bundle.EditGolShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditGolIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

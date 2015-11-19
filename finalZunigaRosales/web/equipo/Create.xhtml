@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEquipoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEquipoLabel_idequipo}" for="idequipo" />
+                    <h:inputText id="idequipo" value="#{equipoController.selected.idequipo}" title="#{bundle.CreateEquipoTitle_idequipo}" required="true" requiredMessage="#{bundle.CreateEquipoRequiredMessage_idequipo}"/>
+                    <h:outputLabel value="#{bundle.CreateEquipoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{equipoController.selected.nombre}" title="#{bundle.CreateEquipoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateEquipoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateEquipoLabel_idgrupo}" for="idgrupo" />
+                    <h:selectOneMenu id="idgrupo" value="#{equipoController.selected.idgrupo}" title="#{bundle.CreateEquipoTitle_idgrupo}" required="true" requiredMessage="#{bundle.CreateEquipoRequiredMessage_idgrupo}">
+                        <f:selectItems value="#{grupoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipoController.create}" value="#{bundle.CreateEquipoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{equipoController.prepareList}" value="#{bundle.CreateEquipoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEquipoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

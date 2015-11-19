@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSancionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSancionEmpty}" rendered="#{sancionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sancionController.items.rowCount > 0}">
+                    <h:outputText value="#{sancionController.pagination.pageFirstItem + 1}..#{sancionController.pagination.pageLastItem + 1}/#{sancionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sancionController.previous}" value="#{bundle.Previous} #{sancionController.pagination.pageSize}" rendered="#{sancionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sancionController.next}" value="#{bundle.Next} #{sancionController.pagination.pageSize}" rendered="#{sancionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sancionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSancionTitle_idsancion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idsancion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSancionTitle_idEquipoJugado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEquipoJugado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSancionTitle_idpartido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpartido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSancionTitle_tipoSancion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoSancion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sancionController.prepareView}" value="#{bundle.ListSancionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sancionController.prepareEdit}" value="#{bundle.ListSancionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sancionController.destroy}" value="#{bundle.ListSancionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sancionController.prepareCreate}" value="#{bundle.ListSancionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSancionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

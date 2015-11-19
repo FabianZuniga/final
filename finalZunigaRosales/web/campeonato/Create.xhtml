@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCampeonatoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCampeonatoLabel_idcampeonato}" for="idcampeonato" />
+                    <h:inputText id="idcampeonato" value="#{campeonatoController.selected.idcampeonato}" title="#{bundle.CreateCampeonatoTitle_idcampeonato}" required="true" requiredMessage="#{bundle.CreateCampeonatoRequiredMessage_idcampeonato}"/>
+                    <h:outputLabel value="#{bundle.CreateCampeonatoLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{campeonatoController.selected.descripcion}" title="#{bundle.CreateCampeonatoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateCampeonatoRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{bundle.CreateCampeonatoLabel_fechaInicio}" for="fechaInicio" />
+                    <h:inputText id="fechaInicio" value="#{campeonatoController.selected.fechaInicio}" title="#{bundle.CreateCampeonatoTitle_fechaInicio}" required="true" requiredMessage="#{bundle.CreateCampeonatoRequiredMessage_fechaInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCampeonatoLabel_fechaFin}" for="fechaFin" />
+                    <h:inputText id="fechaFin" value="#{campeonatoController.selected.fechaFin}" title="#{bundle.CreateCampeonatoTitle_fechaFin}" required="true" requiredMessage="#{bundle.CreateCampeonatoRequiredMessage_fechaFin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCampeonatoLabel_tipoCampeonato}" for="tipoCampeonato" />
+                    <h:selectOneMenu id="tipoCampeonato" value="#{campeonatoController.selected.tipoCampeonato}" title="#{bundle.CreateCampeonatoTitle_tipoCampeonato}" required="true" requiredMessage="#{bundle.CreateCampeonatoRequiredMessage_tipoCampeonato}">
+                        <f:selectItems value="#{tipoCampeonatoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{campeonatoController.create}" value="#{bundle.CreateCampeonatoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{campeonatoController.prepareList}" value="#{bundle.CreateCampeonatoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCampeonatoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

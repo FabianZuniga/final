@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCanchaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCanchaEmpty}" rendered="#{canchaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{canchaController.items.rowCount > 0}">
+                    <h:outputText value="#{canchaController.pagination.pageFirstItem + 1}..#{canchaController.pagination.pageLastItem + 1}/#{canchaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{canchaController.previous}" value="#{bundle.Previous} #{canchaController.pagination.pageSize}" rendered="#{canchaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{canchaController.next}" value="#{bundle.Next} #{canchaController.pagination.pageSize}" rendered="#{canchaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{canchaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCanchaTitle_idcancha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idcancha}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCanchaTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCanchaTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{canchaController.prepareView}" value="#{bundle.ListCanchaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{canchaController.prepareEdit}" value="#{bundle.ListCanchaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{canchaController.destroy}" value="#{bundle.ListCanchaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{canchaController.prepareCreate}" value="#{bundle.ListCanchaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCanchaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

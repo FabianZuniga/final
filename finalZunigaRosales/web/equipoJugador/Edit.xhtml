@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquipoJugadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEquipoJugadorLabel_idEquipoJugador}" for="idEquipoJugador" />
+                    <h:inputText id="idEquipoJugador" value="#{equipoJugadorController.selected.idEquipoJugador}" title="#{bundle.EditEquipoJugadorTitle_idEquipoJugador}" required="true" requiredMessage="#{bundle.EditEquipoJugadorRequiredMessage_idEquipoJugador}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoJugadorLabel_idequipo}" for="idequipo" />
+                    <h:selectOneMenu id="idequipo" value="#{equipoJugadorController.selected.idequipo}" title="#{bundle.EditEquipoJugadorTitle_idequipo}" required="true" requiredMessage="#{bundle.EditEquipoJugadorRequiredMessage_idequipo}">
+                        <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoJugadorLabel_idjugador}" for="idjugador" />
+                    <h:selectOneMenu id="idjugador" value="#{equipoJugadorController.selected.idjugador}" title="#{bundle.EditEquipoJugadorTitle_idjugador}" required="true" requiredMessage="#{bundle.EditEquipoJugadorRequiredMessage_idjugador}">
+                        <f:selectItems value="#{jugadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equipoJugadorController.update}" value="#{bundle.EditEquipoJugadorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEquipoJugadorViewLink}"/>
+                <br />
+                <h:commandLink action="#{equipoJugadorController.prepareList}" value="#{bundle.EditEquipoJugadorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEquipoJugadorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

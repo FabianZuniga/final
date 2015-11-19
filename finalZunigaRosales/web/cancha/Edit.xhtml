@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCanchaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCanchaLabel_idcancha}" for="idcancha" />
+                    <h:inputText id="idcancha" value="#{canchaController.selected.idcancha}" title="#{bundle.EditCanchaTitle_idcancha}" required="true" requiredMessage="#{bundle.EditCanchaRequiredMessage_idcancha}"/>
+                    <h:outputLabel value="#{bundle.EditCanchaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{canchaController.selected.nombre}" title="#{bundle.EditCanchaTitle_nombre}" required="true" requiredMessage="#{bundle.EditCanchaRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditCanchaLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{canchaController.selected.direccion}" title="#{bundle.EditCanchaTitle_direccion}" required="true" requiredMessage="#{bundle.EditCanchaRequiredMessage_direccion}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{canchaController.update}" value="#{bundle.EditCanchaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCanchaViewLink}"/>
+                <br />
+                <h:commandLink action="#{canchaController.prepareList}" value="#{bundle.EditCanchaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCanchaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
