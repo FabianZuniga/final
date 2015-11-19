@@ -1,51 +1,106 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+     <h:head>
+        <title>Facelet Title</title>        
+        <link rel="stylesheet" href="css/style.css"></link>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
+        <header id="main-header">		
+            <a id="logo-header" href="#">
+                <span class="site-name">Fabian Zuñiga Rosales</span>                
+            </a>             
+	</header>
+        <section id="main-content">
+            <article>
+                <p:contentFlow value="#{imagesView.images}" var="image">
+                    <p:graphicImage url="img/#{image}" styleClass="content" />
+                    <!--<div class="caption">#{image}</div>-->
+                </p:contentFlow>
+                <p:breadCrumb>
+                    <p:menuitem value="index" url="index.xhtml" />
+                    <p:menuitem outcome="/campeonato/List" value="Campeonato" />
+                    <p:menuitem outcome="/cancha/List" value="Estadios" />
+                    <p:menuitem outcome="/equipo/List" value="Equipos" />
+                    <p:menuitem outcome="/grupo/List" value="Grupos" />
+                    <p:menuitem outcome="/partido/List" value="Partidos" />                                 
+                </p:breadCrumb>              
+            </article>
+        </section>
+        <p:layout style="width:90%;min-height:600px; margin-left:5%; ">
+            
+            <p:layoutUnit position="center" resizable="true" size="260" minSize="40">
+                <h:form id="form">                
+                    <p:tabView dynamic="true" cache="true">
+                        <p:tab title="Cinturon Blanco">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage url="img/cinturones/blanco.jpg" height="200px"/>
+                                <h:outputText
+                                    value="The story begins as Don Vito Corleone..." />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Cinturon amarillo">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage url="img/cinturones/amarillo.jpg" height="200px"/>
+                                <h:outputText value="Francis Ford Coppola's legendary..." />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Cinturon verde">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage url="img/cinturones/verde.jpg" height="200px"/>
+                                <h:outputText value="After a break of more than 15 years..." />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Cinturon azul">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage url="img/cinturones/azul.jpg" height="200px"/>
+                                <h:outputText value="After a break of more than 15 years..." />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Cinturon rojo">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage url="img/cinturones/rojo.jpg" height="200px"/>
+                                <h:outputText value="After a break of more than 15 years..." />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Cinturon rojo punta negra">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage url="img/cinturones/rojopn.jpg" height="200px" />
+                                <h:outputText value="After a break of more than 15 years..." />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Cinturon Negro">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage url="img/cinturones/negro.jpg" height="200px"/>
+                                <h:outputText value="After a break of more than 15 years..." />
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                </h:form>             
+            </p:layoutUnit>        
+        </p:layout>
+        <footer id="main-footer">
+		<p>&copy; 2014 <a href="http://www.facebook.com">FabianZR</a></p>
+	</footer>
         <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
         <br />
         <h:link outcome="/arbritro/List" value="Show All Arbritro Items"/>
-        <br />
-        <h:link outcome="/campeonato/List" value="Show All Campeonato Items"/>
-        <br />
-        <h:link outcome="/cancha/List" value="Show All Cancha Items"/>
-        <br />
-        <h:link outcome="/equipo/List" value="Show All Equipo Items"/>
         <br />
         <h:link outcome="/equipoJugador/List" value="Show All EquipoJugador Items"/>
         <br />
         <h:link outcome="/gol/List" value="Show All Gol Items"/>
         <br />
-        <h:link outcome="/grupo/List" value="Show All Grupo Items"/>
-        <br />
         <h:link outcome="/jugador/List" value="Show All Jugador Items"/>
-        <br />
-        <h:link outcome="/partido/List" value="Show All Partido Items"/>
-        <br />
+        <br />       
         <h:link outcome="/sancion/List" value="Show All Sancion Items"/>
         <br />
         <h:link outcome="/tipoCampeonato/List" value="Show All TipoCampeonato Items"/>
         <br />
         <h:link outcome="/tipoSancion/List" value="Show All TipoSancion Items"/>
     </h:body>
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
+
+
 
