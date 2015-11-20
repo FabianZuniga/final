@@ -9,7 +9,7 @@
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
-        <link rel="stylesheet" href="../css/style.css"></link>
+        <link rel="stylesheet" href="css/style.css"></link>
     </h:head>
     <h:body>         
         <p:growl id="growl" life="3000" />
@@ -21,7 +21,7 @@
         <section id="main-content">
             <article>
                 <p:contentFlow value="#{imagesView1.images}" var="image">
-                    <p:graphicImage url="../img2/#{image}" styleClass="content" />
+                    <p:graphicImage url="img2/#{image}" styleClass="content" />
                     <!--<div class="caption">#{image}</div>-->
                 </p:contentFlow>  
                 <h:form id="menuForm">
@@ -49,7 +49,7 @@
             
             <p:layoutUnit position="west" size="450" >
                 <p:galleria value="#{imagesView.images}" var="image" panelWidth="435" panelHeight="313" showCaption="true">
-                    <p:graphicImage url=" ../img/#{image}" alt="Image Description for #{image}" title="#{image}" height="300" />
+                    <p:graphicImage url="img/#{image}" alt="Image Description for #{image}" title="#{image}" height="300" />
                 </p:galleria>
             </p:layoutUnit>              
             <p:layoutUnit position="center" size="40">
