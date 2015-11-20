@@ -53,7 +53,43 @@
                 </p:galleria>
             </p:layoutUnit>              
             <p:layoutUnit position="center" size="40">
-                <ui:insert name="body"/>
+
+<h:form id="form">
+             
+    <p:growl id="msgs" showDetail="true" />
+ 
+    <h3 style="margin-top:0">Basic</h3>
+    <p:tabView>
+        <p:tab title="Champions League">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage url="img2/eqp2.png" height="250" />
+                <h:outputText
+                    value="Disputada anualmente desde mayo a junio, la competición fue creada en 1955/56 bajo la denominación de Copa de Clubes Campeones Europeos (nombre original en francés Coupe des Clubs Champions Européens), con un formato de eliminación directa. En 1992 el torneo fue reestructurado incluyendo por primera vez el formato de competición de liga en la fase de cuartos de final, siendo rebautizado con su actual nombre en la edición 1992/93. Originalmente clasificaban al certamen los equipos campeones de las ligas nacionales. En 1997 comenzaron a participar también los subcampeones y en 1999 los clasificados hasta el cuarto puesto, dependiendo del coeficiente UEFA de cada liga." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Liga BBVA">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage url="img2/eqp1.png" height="250"/>
+                <h:outputText value="Considerada como la primera liga del mundo en importancia según el ranking anual oficial de la Federación Internacional de Historia y Estadística de Fútbol (IFFHS),2 ocupa el segundo lugar como la liga más fuerte de la última década en Europa, sólo superada por la Premier League.3
+
+A lo largo de su historia nueve clubes han resultado campeones, siendo el Real Madrid Club de Fútbol el equipo más laureado con treinta y dos campeonatos. Fútbol Club Barcelona, el Club Atlético de Madrid, el Athletic Club, el Valencia Club de Fútbol, la Real Sociedad de Fútbol, el Real Betis Balompié, el Sevilla Fútbol Club y el Real Club Deportivo de La Coruña completan el resto de campeonatos de las ochenta y cuatro temporadas del campeonato.
+
+Entre ellos, los dos primeros citados clubes son los que ostentan el mayor número de puntos en una edición, con cien, logrados en las temporadas 2011-12 —temporada en la que el mismo club logró el récord de goles en una edición con 121— y 2012-13 respectivamente." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Premier League">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage url="img2/eqp3.png" height="250"/>
+                <h:outputText value="La Premier League (oficialmente Barclays Premier League por motivos de patrocinio), también conocida en el Reino Unido como The Premiership, es la máxima categoría de la liga de clubes de fútbol de Inglaterra y Gales.
+
+Fue fundada en 20 de febrero de 1992, siguiendo la decisión de los equipos de la Football League First Division (hasta entonces la máxima categoría de la liga conjunta de Inglaterra y Gales) de separarse de la Football League para tomar ventaja de un lucrativo contrato de derechos de televisión.
+
+El torneo es considerado por la Federación Internacional de Historia y Estadística de Fútbol de la FIFA como la liga más fuerte de la última década en Europa superando a la Primera División de España y la Serie A italiana que ocupan el segundo y tercer lugar respectivamente" />
+            </h:panelGrid>
+        </p:tab>
+    </p:tabView>
+</h:form>
+ 
             </p:layoutUnit>
         </p:layout>
         <footer id="main-footer">
